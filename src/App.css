@@ -1,38 +1,61 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  transition: all 0.2s ease-in-out;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --background: #ffffff;
+  --text: #101828;
+  --grey-text: #475467;
+  --light-grey-text: #667085;
+  --purple-text: #6941c6;
+  --white-text: #ffffff;
+  --purple: #7f56d9;
+  --footer: #1d2939;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background: var(--background);
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text);
+  min-height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
+#root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+}
+img {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
-.App-link {
-  color: #61dafb;
+input,
+textarea,
+button,
+select {
+  font-family: "Inter";
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+button,
+select,
+input[type="datetime-local"] {
+  cursor: pointer;
+}
+
+/* Mobile Phones */
+@media screen and (min-width: 280px) and (max-width: 480px) {
+  body {
+    width: 100vw;
+    overflow-x: hidden;
   }
 }

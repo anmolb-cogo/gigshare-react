@@ -1,0 +1,49 @@
+
+
+.landing{
+    margin: 5% 0 10% 0;
+}
+
+.landing .mid{
+    width: 70%;
+}
+
+.middle-top{
+    height: 50vh;
+}
+
+.middle-bottom{
+    height: 50vh;
+}
+
+
+
+.ending {
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ending img {
+  height: 80%;
+  width: auto;
+}
+
+.ending-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 30px;
+  color: #475467;
+  width: 35%;
+}
+
+.ending-text p {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 60px;
+  letter-spacing: -0.02em;
+  color: #101828;
+}

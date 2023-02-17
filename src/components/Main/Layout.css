@@ -1,0 +1,134 @@
+nav {
+  width: 100vw;
+  height: 7.6vh;
+  border-bottom: 2px solid #f2f4f7;
+  padding: 10px 30px 10px 30px;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+}
+nav ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav ul span.left,
+nav ul span.middle,
+nav ul span.right {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+nav ul li a {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  color: var(--grey-text);
+  text-decoration: none;
+  opacity: 0.95;
+}
+nav ul li a:hover {
+  opacity: 1;
+}
+
+.nav-btn {
+  background: var(--purple-text);
+  border: 1px solid var(--purple);
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 16px;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  border-radius: 8px;
+  line-height: 20px;
+  height: 38px;
+}
+
+footer {
+  background-color: var(--footer);
+  color: var(--white-text);
+  width: 100vw;
+  height: 27.69vh;
+  padding: 10px 30px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 13px;
+}
+footer span.foot {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+span.logo {
+  font-size: 16px !important;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 24px;
+}
+
+span.logo img {
+  height: 32px;
+  width: 32px;
+  margin-right: 7%;
+}
+
+footer hr {
+  border: none;
+  border-top: 0.1px solid #525455;
+  margin-top: 8%;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 24px;
+}
+.main .small {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 24px;
+  text-align: center;
+  color: #7f56d9;
+}
+
+.main .big {
+  font-weight: 600;
+  font-size: 42px;
+  line-height: 60px;
+  text-align: center;
+  letter-spacing: -0.02em;
+  color: #101828;
+}
+
+.main .mid {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  color: #475467;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: #101828;
+}
+
+.home, .pricing {
+  padding: 10px 70px 10px 70px;
+}
