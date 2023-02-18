@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", sans-serif;
   transition: all 0.2s ease-in-out;
 }
 
@@ -23,6 +22,7 @@ body {
   font-size: 14px;
   color: var(--text);
   min-height: 100vh;
+  font-family: "Inter", sans-serif;
 }
 
 #root {
@@ -54,7 +54,8 @@ input[type="datetime-local"] {
 
 /* Mobile Phones */
 @media screen and (min-width: 280px) and (max-width: 480px) {
-  html, body {
+  html,
+  body {
     width: 100vw;
     overflow-x: hidden;
   }
