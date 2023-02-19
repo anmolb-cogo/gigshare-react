@@ -50,7 +50,7 @@ function Add(props) {
     };
 
     axios
-      .post("http://127.0.0.1/article", data, { headers })
+      .post("http://127.0.0.1:3000/article", data, { headers })
       .then((response) => {
         // handle success
         console.log(response.data);
