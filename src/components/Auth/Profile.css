@@ -4,16 +4,16 @@
 }
 
 /* Header */
-.header {
+.profile-header {
   display: flex;
   flex-direction: column;
 }
 
-.banner {
+.profile-banner {
   height: 25vh;
 }
 
-.details {
+.profile-details {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -22,18 +22,18 @@
   height: 12.5vh;
 }
 
-.details-left {
+.profile-details-left {
   display: flex;
   flex-direction: row;
   gap: 24px;
 }
 
-.avatar-container {
+.profile-avatar-container {
   position: relative;
   margin-top: -20%;
 }
 
-.avatar {
+.profile-avatar {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,7 +50,7 @@
   height: 160px;
 }
 
-.tick {
+.profile-tick {
   position: absolute;
   width: 32px;
   height: 32px;
@@ -60,21 +60,21 @@
   right: 0;
 }
 
-.details-left span.name {
+.profile-details-left span.profile-name {
   font-weight: 600;
   font-size: 1.875rem;
   line-height: 38px;
   color: #101828;
 }
 
-.details-left span.email {
+.profile-details-left span.profile-email {
   font-weight: 400;
   font-size: 1rem;
   line-height: 24px;
   color: #475467;
 }
 
-.details span.buttons {
+.profile-details span.profile-buttons {
   display: flex;
   gap: 12px;
   align-items: center;
@@ -82,28 +82,28 @@
 
 /* Personal Info */
 
-.personal-info {
+.profile-personal-info {
   display: flex;
   justify-content: space-between;
   padding: 0px 32px 0px 32px;
   margin: 48px 0px 20px 0;
 }
 
-p.title {
+p.profile-title {
   font-weight: 500;
   font-size: 0.875rem;
   line-height: 20px;
   color: #344054;
 }
 
-p.sub-title {
+p.profile-sub-title {
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 20px;
   color: #475467;
 }
 
-div.card {
+div.profile-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -115,7 +115,7 @@ div.card {
   overflow: hidden;
 }
 
-div.card-top {
+div.profile-card-top {
   /* background-color: aquamarine; */
   width: 100%;
   display: flex;
@@ -125,7 +125,7 @@ div.card-top {
   gap: 24px;
 }
 
-div.card-btn {
+div.profile-card-btn {
   /* background-color: antiquewhite; */
   width: 100%;
   display: flex;
@@ -134,16 +134,16 @@ div.card-btn {
   gap: 16px;
 }
 
-hr.line {
+hr.profile-line {
   border: 1px solid #eaecf0;
   margin: 0px 32px 0px 32px;
 }
-div.input-name {
+div.profile-input-name {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
-div.input {
+div.profile-input {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -151,7 +151,7 @@ div.input {
   width: 48%;
 }
 
-div.email {
+div.profile-email {
   width: 100% !important;
 }
 
@@ -167,7 +167,7 @@ span.profile-pic-form {
   border-radius: 200px;
 }
 
-label.upload {
+label.profile-upload {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -185,20 +185,17 @@ label.upload {
   cursor: pointer;
 }
 
-input[type="file"] {
-  display: none;
-}
 
-label.upload:hover {
+label.profile-upload:hover {
   border: 2px solid #7f56d9;
 }
-.upload-purple {
+.profile-upload-purple {
   font-weight: 600;
   font-size: 0.875rem;
   line-height: 20px;
   color: #6941c6;
 }
-.upload-small {
+.profile-upload-small {
   font-weight: 400;
   font-size: 0.75rem;
   line-height: 18px;
@@ -207,42 +204,43 @@ label.upload:hover {
 
 /* Profile Info */
 
-.profile-info {
+.profile-info-1 {
   display: flex;
   justify-content: space-between;
   padding: 0px 32px 0px 32px;
   margin: 20px 0px 48px 0;
+  /* flex-direction: column; */
 }
 
-.toggle {
+.profile-toggle {
   display: flex;
   width: 100%;
   gap: 8px;
 }
 
-.toggle-label {
+.profile-toggle-label {
   font-weight: 500;
   font-size: 0.875rem;
   line-height: 20px;
   color: #344054;
 }
 
-.toggle-desc {
+.profile-toggle-desc {
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 20px;
   color: #475467;
 }
 
-div.username {
+div.profile-username {
   width: 100% !important;
 }
 
-.input-combined {
+.profile-input-combined {
   display: flex;
   justify-content: flex-start;
 }
-span.input-label {
+span.profile-input-label {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -258,103 +256,103 @@ span.input-label {
   color: #475467;
 }
 
-input.special {
+input.profile-special {
   border-radius: 0px 8px 8px 0px !important;
   border-left: none;
   width: 100% !important;
 }
 
-span.char-count {
+span.profile-char-count {
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 20px;
   color: #475467;
 }
 
-div.format {
+div.profile-format {
   width: 100% !important;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-span.format-icons {
+span.profile-format-icons {
   display: flex;
   align-items: center;
   gap: 4px;
 }
 
-div.country,
-div.timezone {
+div.profile-country,
+div.profile-timezone {
   width: 100% !important;
 }
-div.country select,
-div.timezone select {
+div.profile-country select,
+div.profile-timezone select {
   width: 100% !important;
 }
 
 /* Mobile Phones */
 @media screen and (min-width: 280px) and (max-width: 480px) {
-  .main {
+  .profile-main {
     width: 100vw;
   }
 
-  img.banner {
+  img.profile-banner {
     width: 100vw;
   }
 
-  .details {
+  .profile-details {
     flex-direction: column;
     padding: 0px 16px;
   }
-  .details-left {
+  .profile-details-left {
     flex-direction: column;
   }
-  .details-left span.name {
+  .profile-details-left span.name {
     font-size: 1.5rem;
   }
-  .personal-info {
+  .profile-personal-info {
     margin-top: 35%;
     padding: 0px 16px;
     flex-direction: column;
   }
-  .avatar {
+  .profile-avatar {
     width: 120px;
     height: 120px;
   }
-  .avatar-container {
+  .profile-avatar-container {
     margin-top: -35%;
   }
-  span.tick {
+  span.profile-tick {
     top: 90px;
     left: 90px;
   }
-  span.tick img {
+  span.profile-tick img {
     width: 24px;
     height: 24px;
   }
-  .card {
+  .profile-card {
     width: 100% !important;
     margin-top: 5%;
   }
-  .input-name {
+  .profile-input-name {
     flex-direction: column;
     gap: 24px;
   }
-  div.input {
+  div.profile-input {
     width: 100%;
   }
-  label.upload {
+  label.profile-upload {
     width: 100%;
   }
-  hr {
+  hr.profile-line {
     display: none;
   }
   .profile-info {
     padding: 0px 16px;
     flex-direction: column;
   }
-  div.format {
+  div.profile-format {
     flex-direction: column;
     align-items: flex-start;
   }

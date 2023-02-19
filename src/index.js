@@ -114,7 +114,11 @@ function App(props) {
             }
           />
           <Route path="signup" element={<Signup baseURL={baseURL} />} />
-          {/* <Route path="profile" element={<Profile baseURL={baseURL} />} /> */}
+
+          {authenticated && (
+            <Route path="profile" element={<Profile baseURL={baseURL} userDetails={userDetails}/>} />
+          )}
+
           {authenticated && (
             <Route
               path="add"
