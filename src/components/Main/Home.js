@@ -11,10 +11,12 @@ const Home = (props) => {
   const [mostLiked, setMostLiked] = useState([]);
   const [mostCommented, setMostCommented] = useState([]);
   var baseURL = props.baseURL;
+  console.log(baseURL);
 
   //api call
   const getMostLiked = async function () {
     const url = baseURL + "mostlikes";
+    console.log(url);
     const list = await axios.get(url);
     setMostLiked(list.data);
   };
