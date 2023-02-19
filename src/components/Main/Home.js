@@ -11,19 +11,25 @@ const Home = (props) => {
   const [mostLiked, setMostLiked] = useState([]);
   const [mostCommented, setMostCommented] = useState([]);
 
-  // //api call
-  // const getArticles = async function () {
-  //   const list = await axios.get(
-  //     "http://www.omdbapi.com/?s=harry&apikey=69cc29ba"
-  //   );
-  //   setArticleList(list.data.Search);
-  //   console.log(list);
-  // };
+  //api call
+  const config = {
+    headers: new Headers({
+      "ngrok-skip-browser-warning": "69420",
+    }),
+  };
+  const getMostLiked = async function () {
+    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    const url = "http://181d-103-69-88-178.in.ngrok.io/mostlikes";
+    const list = await axios.get(proxyUrl + url, config);
+    //setMostLiked(JSON.stringify(list.data.Search));
+    //console.log(JSON.stringify(list.data));
+    console.log(list);
+  };
 
   //make API call
-  // useEffect(function () {
-
-  // }, []);
+  useEffect(function () {
+    getMostLiked();
+  }, []);
 
   const temp = [
     {

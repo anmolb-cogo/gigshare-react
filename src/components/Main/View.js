@@ -8,8 +8,11 @@ import Input from "../minor/Input";
 import Select from "../minor/Select";
 import Button from "../minor/Button";
 import "../minor/Input.css";
+import "./View.css";
 
 import { convertFromRaw } from "draft-js";
+import { LikeButton } from "@lyket/react";
+import { Provider } from "@lyket/react";
 
 function View(props) {
   const [title, setTitle] = useState("");
@@ -17,7 +20,21 @@ function View(props) {
   const [categoryId, setCategoryId] = useState("");
   const [banner, setBanner] = useState("");
   const [editorState, setEditorState] = useState();
+  const [totalLikes, setTotalLikes] = useState(4);
+  const [check, setCheck] = useState(0);
 
+  const handleLike = () => {
+    var count = totalLikes;
+    if (check == 0) {
+      count = count + 1;
+      setTotalLikes(count);
+      setCheck(1);
+    } else if (check == 1) {
+      count = count - 1;
+      setCheck(0);
+      setTotalLikes(count);
+    }
+  };
   const findCatId = () => {
     var categories = props.categories;
     var id = categories.indexOf(category) + 1;
@@ -99,8 +116,28 @@ function View(props) {
           onEditorStateChange={onEditorStateChange}
         />
       </div>
+
       <div className="interaction">
-        <div className="like"></div>
+        <div className="like">
+          <button onClick={handleLike}>❤️ {totalLikes}</button>
+        </div>
+        <div className="comments">
+          <div className="new-comment">
+            <input type="text" placeholder="Add Comment"></input>
+            <button className="full-btn">Post Comment</button>
+          </div>
+            <h4>Previous Comments:</h4>
+          <span className="comment">
+            <span className="comment-name">Anonymous</span>
+            commented
+            <span className="comment-body">Some Comment Body</span>
+          </span>
+          <span className="comment">
+            <span className="comment-name">Anonymous</span>
+            commented
+            <span className="comment-body">Some Comment Body</span>
+          </span>
+        </div>
       </div>
     </div>
   );

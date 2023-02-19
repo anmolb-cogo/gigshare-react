@@ -11,13 +11,14 @@ import "../minor/Input.css";
 import ImgUpload from "./ImgUpload";
 
 import { convertFromRaw } from "draft-js";
+import {convertToRaw} from "draft-js";
 
 function Add(props) {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [banner, setBanner] = useState("");
-  const [editorState, setEditorState] = useState();
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const findCatId = () => {
     var categories = props.categories;
@@ -29,10 +30,16 @@ function Add(props) {
     setEditorState(editorState);
     console.log(editorState);
   };
+  const handleSave = () => {
+    const contentState = editorState.getCurrentContent();
+    const content = JSON.stringify(convertToRaw(contentState));
+    console.log(content);
+    // send the content to the server using fetch
+  };
 
-  useEffect(() => {
-    setEditorState(EditorState.createEmpty());
-  }, []);
+  // useEffect(() => {
+  //   setEditorState(EditorState.createEmpty());
+  // }, []);
 
   //some test
   const content = {
@@ -82,12 +89,13 @@ function Add(props) {
             <label>Upload a Banner Image</label>
             <ImgUpload setBanner={setBanner}></ImgUpload>
           </div>
-          <Button text="Submit Article"></Button>
+          {/* <Button text="Submit Article" onClick={handleSave}></Button> */}
+          <button onClick={handleSave}>Hel</button>
         </span>
       </div>
       <div className="article">
         <Editor
-          initialEditorState={editorState}
+          editorState={editorState}
           onEditorStateChange={onEditorStateChange}
         />
       </div>

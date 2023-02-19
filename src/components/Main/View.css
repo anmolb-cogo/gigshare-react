@@ -1,0 +1,41 @@
+.interaction {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+}
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 0.5px solid var(--light-grey-text);
+}
+.comment-name {
+  font-size: 14px;
+}
+
+.comment-body {
+  font-size: 14px;
+}
+
+.new-comment{
+    width: 100%;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.new-comment input{
+    width: 80%;
+}
