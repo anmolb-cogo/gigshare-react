@@ -1,0 +1,362 @@
+.profile-main {
+  width: 100vw;
+  height: 100%;
+}
+
+/* Header */
+.header {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner {
+  height: 25vh;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 24px 32px;
+  gap: 24px;
+  height: 12.5vh;
+}
+
+.details-left {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.avatar-container {
+  position: relative;
+  margin-top: -20%;
+}
+
+.avatar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background: url(https://anmolbansal7.github.io/cogoport-a2-responsive/assets/profile.png);
+  background-size: contain;
+  border: 4px solid #ffffff;
+  box-shadow: 0px 12px 16px -4px rgba(16, 24, 40, 0.08),
+    0px 4px 6px -2px rgba(16, 24, 40, 0.03);
+  border-radius: 200px;
+  width: 160px;
+  height: 160px;
+}
+
+.tick {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: 120px;
+  bottom: 0;
+  left: 115px;
+  right: 0;
+}
+
+.details-left span.name {
+  font-weight: 600;
+  font-size: 1.875rem;
+  line-height: 38px;
+  color: #101828;
+}
+
+.details-left span.email {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 24px;
+  color: #475467;
+}
+
+.details span.buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Personal Info */
+
+.personal-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 32px 0px 32px;
+  margin: 48px 0px 20px 0;
+}
+
+p.title {
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 20px;
+  color: #344054;
+}
+
+p.sub-title {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 20px;
+  color: #475467;
+}
+
+div.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 70%;
+  border: 1px solid #eaecf0;
+  box-shadow: 0px 1px 3px rgba(16, 24, 40, 0.1),
+    0px 1px 2px rgba(16, 24, 40, 0.06);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+div.card-top {
+  /* background-color: aquamarine; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+  gap: 24px;
+  border-bottom: 1px solid #eaecf0;
+}
+
+div.card-btn {
+  /* background-color: antiquewhite; */
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 24px;
+  gap: 16px;
+}
+
+hr.line {
+  border: 1px solid #eaecf0;
+  margin: 0px 32px 0px 32px;
+}
+div.input-name {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+div.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 6px;
+  width: 48%;
+}
+
+div.email {
+  width: 100% !important;
+}
+
+span.profile-pic-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  /* background: url(../assets/profile.png); */
+  background-size: contain;
+  border-radius: 200px;
+}
+
+label.upload {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  width: 86%;
+  height: auto;
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 20px;
+  color: #475467;
+  cursor: pointer;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+label.upload:hover {
+  border: 2px solid #7f56d9;
+}
+.upload-purple {
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 20px;
+  color: #6941c6;
+}
+.upload-small {
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 18px;
+  color: #475467;
+}
+
+/* Profile Info */
+
+.profile-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 32px 0px 32px;
+  margin: 20px 0px 48px 0;
+}
+
+.toggle {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+}
+
+.toggle-label {
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 20px;
+  color: #344054;
+}
+
+.toggle-desc {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 20px;
+  color: #475467;
+}
+
+div.username {
+  width: 100% !important;
+}
+
+.input-combined {
+  display: flex;
+  justify-content: flex-start;
+}
+span.input-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 12px 10px 14px;
+  /* width: 25%; */
+  height: 44px;
+  border-radius: 8px 0px 0px 8px;
+  border: 1px solid #d0d5dd;
+  box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 24px;
+  color: #475467;
+}
+
+input.special {
+  border-radius: 0px 8px 8px 0px !important;
+  border-left: none;
+  width: 100% !important;
+}
+
+span.char-count {
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 20px;
+  color: #475467;
+}
+
+div.format {
+  width: 100% !important;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+span.format-icons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+div.country,
+div.timezone {
+  width: 100% !important;
+}
+div.country select,
+div.timezone select {
+  width: 100% !important;
+}
+
+/* Mobile Phones */
+@media screen and (min-width: 280px) and (max-width: 480px) {
+  .main {
+    width: 100vw;
+  }
+
+  img.banner {
+    width: 100vw;
+  }
+
+  .details {
+    flex-direction: column;
+    padding: 0px 16px;
+  }
+  .details-left {
+    flex-direction: column;
+  }
+  .details-left span.name {
+    font-size: 1.5rem;
+  }
+  .personal-info {
+    margin-top: 35%;
+    padding: 0px 16px;
+    flex-direction: column;
+  }
+  .avatar {
+    width: 120px;
+    height: 120px;
+  }
+  .avatar-container {
+    margin-top: -35%;
+  }
+  span.tick {
+    top: 90px;
+    left: 90px;
+  }
+  span.tick img {
+    width: 24px;
+    height: 24px;
+  }
+  .card {
+    width: 100% !important;
+    margin-top: 5%;
+  }
+  .input-name {
+    flex-direction: column;
+    gap: 24px;
+  }
+  div.input {
+    width: 100%;
+  }
+  label.upload {
+    width: 100%;
+  }
+  hr {
+    display: none;
+  }
+  .profile-info {
+    padding: 0px 16px;
+    flex-direction: column;
+  }
+  div.format {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

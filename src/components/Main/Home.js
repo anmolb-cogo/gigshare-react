@@ -13,143 +13,30 @@ const Home = (props) => {
 
   //api call
   const config = {
-    headers: new Headers({
+    headers: {
       "ngrok-skip-browser-warning": "69420",
-    }),
+    },
   };
   const getMostLiked = async function () {
     const proxyUrl = "https://cors-anywhere.herokuapp.com/";
     const url = "http://181d-103-69-88-178.in.ngrok.io/mostlikes";
     const list = await axios.get(proxyUrl + url, config);
-    //setMostLiked(JSON.stringify(list.data.Search));
-    //console.log(JSON.stringify(list.data));
-    console.log(list);
+    setMostLiked(list.data);
+    console.log(list.data);
+  };
+
+  const getMostCommented = async function () {
+    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
+    const url = "https://181d-103-69-88-178.in.ngrok.io/mostcomments";
+    const list = await axios.get(proxyUrl + url, config);
+    setMostCommented(list.data);
+    console.log(list.data);
   };
 
   //make API call
   useEffect(function () {
     getMostLiked();
-  }, []);
-
-  const temp = [
-    {
-      id: 2,
-      body: "Perth is home to some of the most beautiful beaches in Australia. Cottesloe Beach is a popular spot for swimming, surfing, and sunbathing. The beach has a lively atmosphere and is a great spot to catch the sunset. If you’re looking for something more secluded, head to the southern beaches like Port Beach and Leighton Beach. These beaches are perfect for a quiet day in the sun or a stroll along the coastline.",
-      article_name: "The Hidden Gems of Perth",
-      category_id: 2,
-      user_id: 1,
-      image: "https://miro.medium.com/v2/resize:fit:1400/0*K53vaN573pIUpslG",
-      likes: 23,
-      created_at: "2023-02-18T09:01:23.263Z",
-      updated_at: "2023-02-18T09:01:23.263Z",
-      username: "Anmol Bansal",
-    },
-    {
-      id: 3,
-      body: "My first approach trying to handle this issue was to map the requests trying to use the Next.js rewrite function watching the header of each request. It makes sense to work, but for now, we can’t map header values as routes, only parameters.",
-      article_name: "Using wildcard subdomains as paths",
-      category_id: 3,
-      user_id: 2,
-      image:
-        "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*l0JqKFQ03UHwQqcqgIVLWw.jpeg",
-      likes: 12,
-      created_at: "2023-02-18T09:46:18.117Z",
-      updated_at: "2023-02-18T09:46:18.117Z",
-      username: "Anmol Bansal",
-    },
-    {
-      id: 4,
-      body: "This method provides the declarative API of React: You tell React what state you want the UI to be in, and it ensures that the DOM matches. This abstracts off the attribute manipulation, event handling, and manual DOM updates that you would have to utilise to develop your app otherwise.",
-      article_name: "Virtual DOM in React JS",
-      category_id: 1,
-      user_id: 1,
-      image:
-        "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*AYRufXTdVWV3z5-Uy5_jAg.png",
-      likes: 10,
-      created_at: "2023-02-18T11:04:25.671Z",
-      updated_at: "2023-02-18T11:09:50.023Z",
-      username: "Anmol Bansal",
-    },
-    {
-      id: 2,
-      body: "Perth is home to some of the most beautiful beaches in Australia. Cottesloe Beach is a popular spot for swimming, surfing, and sunbathing. The beach has a lively atmosphere and is a great spot to catch the sunset. If you’re looking for something more secluded, head to the southern beaches like Port Beach and Leighton Beach. These beaches are perfect for a quiet day in the sun or a stroll along the coastline.",
-      article_name: "The Hidden Gems of Perth",
-      category_id: 2,
-      user_id: 1,
-      image: "https://miro.medium.com/v2/resize:fit:1400/0*K53vaN573pIUpslG",
-      likes: 23,
-      created_at: "2023-02-18T09:01:23.263Z",
-      updated_at: "2023-02-18T09:01:23.263Z",
-      username: "Anmol Bansal",
-    },
-    {
-      id: 3,
-      body: "My first approach trying to handle this issue was to map the requests trying to use the Next.js rewrite function watching the header of each request. It makes sense to work, but for now, we can’t map header values as routes, only parameters.",
-      article_name: "Using wildcard subdomains as paths",
-      category_id: 3,
-      user_id: 2,
-      image:
-        "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*l0JqKFQ03UHwQqcqgIVLWw.jpeg",
-      likes: 12,
-      created_at: "2023-02-18T09:46:18.117Z",
-      updated_at: "2023-02-18T09:46:18.117Z",
-      username: "Anmol Bansal",
-    },
-    {
-      id: 4,
-      body: "This method provides the declarative API of React: You tell React what state you want the UI to be in, and it ensures that the DOM matches. This abstracts off the attribute manipulation, event handling, and manual DOM updates that you would have to utilise to develop your app otherwise.",
-      article_name: "Virtual DOM in React JS",
-      category_id: 1,
-      user_id: 1,
-      image:
-        "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*AYRufXTdVWV3z5-Uy5_jAg.png",
-      likes: 10,
-      created_at: "2023-02-18T11:04:25.671Z",
-      updated_at: "2023-02-18T11:09:50.023Z",
-      username: "Anmol Bansal",
-    },
-    {
-      id: 2,
-      body: "Perth is home to some of the most beautiful beaches in Australia. Cottesloe Beach is a popular spot for swimming, surfing, and sunbathing. The beach has a lively atmosphere and is a great spot to catch the sunset. If you’re looking for something more secluded, head to the southern beaches like Port Beach and Leighton Beach. These beaches are perfect for a quiet day in the sun or a stroll along the coastline.",
-      article_name: "The Hidden Gems of Perth",
-      category_id: 2,
-      user_id: 1,
-      image: "https://miro.medium.com/v2/resize:fit:1400/0*K53vaN573pIUpslG",
-      likes: 23,
-      created_at: "2023-02-18T09:01:23.263Z",
-      updated_at: "2023-02-18T09:01:23.263Z",
-      username: "Anmol Bansal",
-    },
-    {
-      id: 3,
-      body: "My first approach trying to handle this issue was to map the requests trying to use the Next.js rewrite function watching the header of each request. It makes sense to work, but for now, we can’t map header values as routes, only parameters.",
-      article_name: "Using wildcard subdomains as paths",
-      category_id: 3,
-      user_id: 2,
-      image:
-        "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*l0JqKFQ03UHwQqcqgIVLWw.jpeg",
-      likes: 12,
-      created_at: "2023-02-18T09:46:18.117Z",
-      updated_at: "2023-02-18T09:46:18.117Z",
-      username: "Anmol Bansal",
-    },
-    {
-      id: 4,
-      body: "This method provides the declarative API of React: You tell React what state you want the UI to be in, and it ensures that the DOM matches. This abstracts off the attribute manipulation, event handling, and manual DOM updates that you would have to utilise to develop your app otherwise.",
-      article_name: "Virtual DOM in React JS",
-      category_id: 1,
-      user_id: 1,
-      image:
-        "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*AYRufXTdVWV3z5-Uy5_jAg.png",
-      likes: 10,
-      created_at: "2023-02-18T11:04:25.671Z",
-      updated_at: "2023-02-18T11:09:50.023Z",
-      username: "Anmol Bansal",
-    },
-  ];
-  useEffect(function () {
-    setMostLiked(temp);
-    setMostCommented(temp);
+    getMostCommented();
   }, []);
 
   return (
@@ -179,7 +66,7 @@ const Home = (props) => {
                     categoryId={article.category_id}
                     title={article.article_name}
                     avatar={article.profile}
-                    author={article.username}
+                    author={article.user_name}
                     date={article.created_at}></FirstCard>
                 );
               }
@@ -197,7 +84,7 @@ const Home = (props) => {
                     categoryId={article.category_id}
                     title={article.article_name}
                     avatar={article.profile}
-                    author={article.username}
+                    author={article.user_name}
                     date={article.created_at}></LandCard>
                 );
               }
@@ -219,7 +106,7 @@ const Home = (props) => {
                   categoryId={article.category_id}
                   title={article.article_name}
                   avatar={article.profile}
-                  author={article.username}
+                  author={article.user_name}
                   date={article.created_at}></VerticalCard>
               );
             }

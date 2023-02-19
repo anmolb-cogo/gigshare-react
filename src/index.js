@@ -18,20 +18,36 @@ import View from "./components/Main/View";
 
 function App() {
   var categories = ["Technology", "Travel", "Food"];
+  var baseURL = "http://181d-103-69-88-178.in.ngrok.io/";
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home categories={categories} />} />
-          <Route path="blogs" element={<Blogs categories={categories} />} />
+          <Route
+            path="blogs"
+            element={<Blogs categories={categories} baseURL={baseURL} />}
+          />
           <Route path="pricing" element={<Pricing />} />
-          <Route path="login" element={<Login />} />
-          <Route path="signup" element={<Signup />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="add" element={<Add categories={categories} />} />
-          <Route path="edit" element={<Edit categories={categories} />} />
-          <Route path="your" element={<Your categories={categories} />} />
-          <Route path="view" element={<View categories={categories} />} />
+          <Route path="login" element={<Login baseURL={baseURL} />} />
+          <Route path="signup" element={<Signup baseURL={baseURL} />} />
+          <Route path="profile" element={<Profile baseURL={baseURL} />} />
+          <Route
+            path="add"
+            element={<Add categories={categories} baseURL={baseURL} />}
+          />
+          <Route
+            path="edit"
+            element={<Edit categories={categories} baseURL={baseURL} />}
+          />
+          <Route
+            path="your"
+            element={<Your categories={categories} baseURL={baseURL} />}
+          />
+          <Route
+            path="view"
+            element={<View categories={categories} baseURL={baseURL} />}
+          />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

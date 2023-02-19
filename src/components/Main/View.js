@@ -126,7 +126,7 @@ function View(props) {
             <input type="text" placeholder="Add Comment"></input>
             <button className="full-btn">Post Comment</button>
           </div>
-            <h4>Previous Comments:</h4>
+          <h4>Previous Comments:</h4>
           <span className="comment">
             <span className="comment-name">Anonymous</span>
             commented
