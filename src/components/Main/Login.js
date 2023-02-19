@@ -9,17 +9,35 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  // const login = () => {
+  //   console.log(email);
+  //   const temp = {
+  //     user: {
+  //       email: email,
+  //       password: password,
+  //     },
+  //   };
+  //   axios
+  //     .post("http://127.0.0.1:3000/login", temp)
+  //     .then((response) => console.log(response));
+  // };
+
   const login = () => {
-    console.log(email);
-    const temp = {
-      user: {
-        email: email,
-        password: password,
-      },
-    };
     axios
-      .post("http://127.0.0.1:3000/login", temp)
-      .then((response) => console.log(response));
+      .post("http://127.0.0.1:3000/login", {
+        user: {
+          email: email,
+          password: password,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        const authToken = response.headers.authorization;
+        console.log(authToken);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
   return (
     <div className="login">
@@ -30,13 +48,15 @@ const Login = () => {
         placeholder="Enter your email"
         label="E-Mail ID"
         value={email}
-        func={setEmail}></Input>
+        func={setEmail}
+      ></Input>
       <Input
         type="password"
         placeholder="Enter your password"
         label="Password"
         value={password}
-        func={setPassword}></Input>
+        func={setPassword}
+      ></Input>
       <div className="input">
         <div className="forgot">Forgot Password</div>
       </div>
