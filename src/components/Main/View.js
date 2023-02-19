@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
-import { EditorState } from "draft-js";
+import { EditorState, convertFromRaw } from 'draft-js';
 import { Editor } from "react-draft-wysiwyg";
 import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "../Auth/Auth.css";
@@ -10,7 +10,6 @@ import Button from "../minor/Button";
 import "../minor/Input.css";
 import "./View.css";
 
-import { convertFromRaw } from "draft-js";
 import { LikeButton } from "@lyket/react";
 import { Provider } from "@lyket/react";
 import axios from "axios";
@@ -67,20 +66,34 @@ function View(props) {
   }, []);
 
   //some test
-  const content = {
-    entityMap: {},
+  const jsonContent = {
     blocks: [
       {
-        key: "637gr",
-        text: "Initialized from content state.",
+        key: "bks89",
+        text: "Hello, I am Anmol Bansal. Do I need something extra for this too?",
         type: "unstyled",
         depth: 0,
-        inlineStyleRanges: [],
+        inlineStyleRanges: [
+          { offset: 7, length: 10, style: "BOLD" },
+          { offset: 18, length: 6, style: "ITALIC" },
+        ],
         entityRanges: [],
         data: {},
       },
     ],
+    entityMap: {},
   };
+  const content = JSON.parse(JSON.stringify(jsonContent));
+  const contentState = convertFromRaw(content);
+
+  const [editorState, setEditorState] = useState(
+    EditorState.createWithContent(contentState)
+  );
+
+  const onEditorStateChange = () => {
+    setEditorState(editorState);
+  };
+
   //some test
 
   return (
@@ -123,7 +136,12 @@ function View(props) {
           initialEditorState={editorState}
           onEditorStateChange={onEditorStateChange}
         /> */}
-        {location.state.body}
+        {/* {location.state.body} */}
+        <Editor
+          editorState={editorState}
+          onEditorStateChange={onEditorStateChange}
+          readOnly={true} // set to true to make the editor content read-only
+        />
       </div>
 
       <div className="interaction">

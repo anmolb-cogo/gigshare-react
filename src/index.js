@@ -49,8 +49,8 @@ function App() {
                 baseURL={baseURL}
                 authenticated={authenticated}
                 setAuthenticated={setAuthenticated}
-                authToken = {authToken}
-                setAuthToken = {setAuthToken}
+                authToken={authToken}
+                setAuthToken={setAuthToken}
               />
             }
           />
@@ -64,6 +64,7 @@ function App() {
                 baseURL={baseURL}
                 authenticated={authenticated}
                 setAuthenticated={setAuthenticated}
+                authToken={authToken}
               />
             }
           />
