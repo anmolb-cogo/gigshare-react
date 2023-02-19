@@ -20,6 +20,13 @@ import axios from "axios";
 function App(props) {
   var categories = ["Technology", "Travel", "Food"];
   const [authors, setAuthors] = useState(["List of Authors"]);
+  const [userDetails, setUserDetails] = useState({
+    id: localStorage.getItem("userId"),
+    email: localStorage.getItem("email"),
+    name: localStorage.getItem("name"),
+    description: localStorage.getItem("bio"),
+    image_url: localStorage.getItem("image"),
+  });
   //api call
   const getAuthors = async function () {
     const url = baseURL + "getauthours";

@@ -18,8 +18,13 @@ const Layout = (props) => {
       props.setAuthenticated(false);
       localStorage.removeItem("token");
       localStorage.removeItem("userId");
+      localStorage.removeItem("email");
+      localStorage.removeItem("image");
+      localStorage.removeItem("name");
+      localStorage.removeItem("bio");
       console.log(props.authToken);
       console.log(props.authenticated);
+      alert("Logged Out!");
     }
   };
   return (

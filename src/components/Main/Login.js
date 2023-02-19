@@ -27,6 +27,11 @@ const Login = (props) => {
         props.setAuthToken(authToken);
         localStorage.setItem("token", authToken);
         localStorage.setItem("userId", response.data.user.id);
+        localStorage.setItem("email", response.data.user.email);
+        localStorage.setItem("name", response.data.user.name);
+        localStorage.setItem("bio", response.data.user.description);
+        localStorage.setItem("image", response.data.user.image_url);
+        window.location.href = "/";
       })
       .catch((error) => alert(error));
   };
