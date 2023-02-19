@@ -14,6 +14,7 @@ import Add from "./components/Auth/Add";
 import Edit from "./components/Auth/Edit";
 import Your from "./components/Auth/Your";
 import NoPage from "./components/Main/NoPage";
+import View from "./components/Main/View";
 
 function App() {
   var categories = ["Technology", "Travel", "Food"];
@@ -30,6 +31,7 @@ function App() {
           <Route path="add" element={<Add categories={categories} />} />
           <Route path="edit" element={<Edit categories={categories} />} />
           <Route path="your" element={<Your categories={categories} />} />
+          <Route path="view" element={<View categories={categories} />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

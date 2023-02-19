@@ -10,6 +10,20 @@ const Blogs = (props) => {
   const [search, setSearch] = useState("");
   const [catFilter, setCatFilter] = useState("");
   const [authFilter, setAuthFilter] = useState("");
+  const [authors, setAuthors] = useState("");
+
+  //api call
+  const getAuthors = async function () {
+    const list = await axios.get(
+      "http://www.omdbapi.com/?s=harry&apikey=69cc29ba"
+    );
+    setAuthors(list.data);
+  };
+
+  // //make API call
+  useEffect(function () {
+    getAuthors();
+  }, []);
 
   const temp = [
     {

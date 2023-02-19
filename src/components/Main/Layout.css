@@ -135,6 +135,12 @@ h3 {
   padding: 10px 70px 10px 70px;
 }
 
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 @media screen and (min-width: 280px) and (max-width: 480px) {
   nav {
     overflow: hidden;
