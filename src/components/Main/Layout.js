@@ -5,13 +5,20 @@ import "./Layout.css";
 const Layout = (props) => {
   const logout = () => {
     console.log("Logging out");
-    axios.delete("https://127.0.0.1:3000/logout", {
+    const result = axios.delete("https://127.0.0.1:3000/logout", {
       headers: {
         Authorization: props.authToken,
       },
     });
-    props.setAuthToken = "";
-    props.setAuthenticated = false;
+    if (result.length == 0) {
+      alert(result.data);
+    } else {
+      props.setAuthToken = "";
+      props.setAuthenticated = false;
+      console.log(props.authToken);
+      console.log(props.authenticated);
+      
+    }
   };
   return (
     <>
@@ -63,7 +70,7 @@ const Layout = (props) => {
               </li>
 
               <li>
-                <Link to="/" className="nav-btn" onClick={logout}>
+                <Link className="nav-btn" onClick={logout}>
                   Log out
                 </Link>
               </li>
