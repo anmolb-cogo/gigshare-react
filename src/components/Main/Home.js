@@ -15,13 +15,13 @@ const Home = (props) => {
   //api call
   const getMostLiked = async function () {
     const url = baseURL + "mostlikes";
-    const list = await axios.get(url, config);
+    const list = await axios.get(url);
     setMostLiked(list.data);
   };
 
   const getMostCommented = async function () {
     const url = baseURL + "mostcomments";
-    const list = await axios.get(url, config);
+    const list = await axios.get(url);
     setMostCommented(list.data);
   };
 
