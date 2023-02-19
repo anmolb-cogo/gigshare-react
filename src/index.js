@@ -52,14 +52,14 @@ function App(props) {
       console.log(token);
       setAuthenticated(false);
     } else if (token) {
-      console.log("Token Found");
-      console.log(token);
+      // console.log("Token Found");
+      // console.log(token);
       const tokenid = localStorage.getItem("token");
       setAuthToken(tokenid);
       const userId = localStorage.getItem("userId");
       setUserId(userId);
-      console.log(userId);
-      console.log(authToken);
+      // console.log(userId);
+      // console.log(authToken);
       setAuthenticated(true);
     }
   };

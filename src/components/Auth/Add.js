@@ -17,11 +17,17 @@ function Add(props) {
   const [categoryId, setCategoryId] = useState("");
   const [banner, setBanner] = useState("");
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  var authToken = localStorage.getItem("token");
 
-  const findCatId = () => {
+  console.log(category);
+  console.log(banner);
+
+  var baseURL = props.baseURL;
+
+  const findCatId = (category) => {
     var categories = props.categories;
     var id = categories.indexOf(category) + 1;
-    setCategoryId(id);
+    return id;
   };
 
   const onEditorStateChange = (editorState) => {
@@ -29,37 +35,44 @@ function Add(props) {
     console.log(editorState);
   };
   const handleSave = () => {
-    const contentState = editorState.getCurrentContent();
-    const content = JSON.stringify(convertToRaw(contentState));
-    console.log(content);
+    if (authToken) {
+      const contentState = editorState.getCurrentContent();
+      const content = JSON.stringify(convertToRaw(contentState));
+      console.log(content);
 
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: props.authToken, // add your authorization token here
-    };
+      const headers = {
+        "Content-Type": "application/json",
+        Authorization: authToken,
+      };
 
-    const data = {
-      article: {
-        article_name: title,
-        body: content,
-        category_id: 1,
-        user_id: 1,
-        likes: 0,
-        image: banner,
-      },
-    };
+      const data = {
+        article: {
+          article_name: title,
+          body: content,
+          category_id: findCatId(category),
+          user_id: parseInt(localStorage.getItem("userId")),
+          likes: 0,
+          image: banner,
+        },
+      };
 
-    axios
-      .post("http://127.0.0.1:3000/article", data, { headers })
-      .then((response) => {
-        // handle success
-        console.log(response.data);
-      })
-      .catch((error) => {
-        // handle error
-        console.log(error);
-      });
-    // send the content to the server using fetch
+      console.log(data);
+
+      axios
+        .post(baseURL + "article", data, headers)
+        .then((response) => {
+          // handle success
+          console.log(response.data);
+          alert("Your submission will be published shortly.");
+        })
+        .catch((error) => {
+          // handle error
+          console.log(error);
+          alert(error);
+        });
+    } else {
+      alert("You need to login to Add an Article");
+    }
   };
 
   // useEffect(() => {
@@ -73,13 +86,14 @@ function Add(props) {
         <span
           className="main-banner"
           style={{
-            backgroundImage: "url(" + { banner } + ")",
+            backgroundImage: "url(" + banner + ")",
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             width: "90%",
             height: "33vh",
-          }}></span>
+          }}
+        ></span>
         <span className="big">{title}</span>
         <span className="filters">
           <Input
@@ -87,15 +101,17 @@ function Add(props) {
             placeholder="Enter Article Title"
             label="Article Title"
             value={title}
-            func={setTitle}></Input>
+            func={setTitle}
+          ></Input>
           <Select
-            label="Select a Category"
-            categories={props.categories}
+            label="Filter by Category"
+            arr={props.categories}
             value={category}
-            func={setCategory}></Select>
+            func={setCategory}
+          ></Select>
           <div className="input">
             <label>Upload a Banner Image</label>
-            <ImgUpload setBanner={setBanner}></ImgUpload>
+            <ImgUpload banner={banner} setBanner={setBanner}></ImgUpload>
           </div>
           <Button text="Submit Article" onClick={handleSave}></Button>
         </span>

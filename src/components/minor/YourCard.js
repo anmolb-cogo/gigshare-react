@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 import Button from "./Button";
 import "./Card.css";
 
@@ -46,7 +47,10 @@ const Card = (props) => {
         <span className="desc">{props.body}</span>
         <span className="button-details">
           {convertDate(props.date)}
-          <button className="fill-btn">Edit</button>
+          <Link to="/edit" state={props.article}>
+            <button className="fill-btn">Edit</button>
+          </Link>
+
           <button className="fill-btn" onClick={() => delArticle(props.id)}>
             Delete
           </button>

@@ -3,7 +3,6 @@ import "./Input.css";
 
 const Select = (props) => {
   var temp = props.arr;
-  console.log(temp);
   return (
     <div className="input">
       <label>{props.label}</label>

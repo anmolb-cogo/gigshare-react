@@ -87,6 +87,7 @@ const Your = (props) => {
                 title={article.article_name}
                 date={article.created_at}
                 baseURL={props.baseURL}
+                article={article}
               />
             );
           })}

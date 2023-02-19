@@ -12,9 +12,6 @@ const Blogs = (props) => {
   const [authFilter, setAuthFilter] = useState("");
 
   var baseURL = props.baseURL;
-  console.log(baseURL);
-  console.log(props.categories);
-  console.log(props.authors);
 
   //api call
   const getArticleList = async function () {
