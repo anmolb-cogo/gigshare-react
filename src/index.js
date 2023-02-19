@@ -23,7 +23,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home categories={categories} baseURL={baseURL} />} />
+          <Route
+            index
+            element={<Home categories={categories} baseURL={baseURL} />}
+          />
           <Route
             path="blogs"
             element={<Blogs categories={categories} baseURL={baseURL} />}
@@ -31,7 +34,7 @@ function App() {
           <Route path="pricing" element={<Pricing />} />
           <Route path="login" element={<Login baseURL={baseURL} />} />
           <Route path="signup" element={<Signup baseURL={baseURL} />} />
-          <Route path="profile" element={<Profile baseURL={baseURL} />} />
+          {/* <Route path="profile" element={<Profile baseURL={baseURL} />} /> */}
           <Route
             path="add"
             element={<Add categories={categories} baseURL={baseURL} />}
