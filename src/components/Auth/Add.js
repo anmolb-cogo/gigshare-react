@@ -14,7 +14,7 @@ import axios from "axios";
 function Add(props) {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
-  const [categoryId, setCategoryId] = useState("");
+  // const [categoryId, setCategoryId] = useState("");
   const [banner, setBanner] = useState("");
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   var authToken = localStorage.getItem("token");

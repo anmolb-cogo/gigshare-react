@@ -33,9 +33,9 @@ const VerticalCard = (props) => {
               <path
                 d="M7 21L17 11M17 11H7M17 11V21"
                 stroke="black"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </span>

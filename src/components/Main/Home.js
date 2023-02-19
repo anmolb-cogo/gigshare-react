@@ -11,7 +11,7 @@ const Home = (props) => {
   const [mostLiked, setMostLiked] = useState([]);
   const [mostCommented, setMostCommented] = useState([]);
   var baseURL = props.baseURL;
-  console.log(baseURL);
+  // console.log(baseURL);
 
   //api call
   const getMostLiked = async function () {
@@ -116,9 +116,9 @@ const Home = (props) => {
             <path
               d="M1.16669 6.99996H12.8334M12.8334 6.99996L7.00002 1.16663M12.8334 6.99996L7.00002 12.8333"
               stroke="#475467"
-              stroke-width="1.66667"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="1.66667"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </span>
