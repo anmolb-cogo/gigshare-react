@@ -11,35 +11,29 @@ const Blogs = (props) => {
   const [catFilter, setCatFilter] = useState("");
   const [authFilter, setAuthFilter] = useState("");
   const [authors, setAuthors] = useState("");
+  var baseURL = props.baseURL;
+  console.log(baseURL);
 
   //api call
   const getAuthors = async function () {
-    const list = await axios.get(
-      "http://www.omdbapi.com/?s=harry&apikey=69cc29ba"
-    );
+    const url = baseURL + "getauthours";
+    console.log(url);
+    const list = await axios.get(url);
     setAuthors(list.data);
+  };
+
+  //api call
+  const getArticleList = async function () {
+    const url = baseURL + "articles";
+    console.log(url);
+    const list = await axios.get(url);
+    setArticleList(list.data);
   };
 
   // //make API call
   useEffect(function () {
     getAuthors();
-  }, []);
-
-  //api call
-  // const getArticles = async function () {
-  //   const list = await axios.get(
-  //     "http://www.omdbapi.com/?s=harry&apikey=69cc29ba"
-  //   );
-  //   setArticleList(list.data);
-  //   console.log(list);
-  // };
-
-  // //make API call
-  // useEffect(function () {
-  //   getArticles();
-  // }, []);
-  useEffect(function () {
-    //setArticleList(temp);
+    getArticleList();
   }, []);
 
   return (
