@@ -1,3 +1,4 @@
+import Button from "./Button";
 import "./Card.css";
 
 const Card = (props) => {
@@ -24,24 +25,10 @@ const Card = (props) => {
           <span>{props.title}</span>
         </span>
         <span className="desc">{props.body}</span>
-        <span className="profile">
-          <span
-            className="avatar"
-            style={{
-              backgroundImage:
-                "url(" +
-                "https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350" +
-                ")",
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-            }}>
-            Hello
-          </span>
-          <span className="avatar-details">
-            <p className="name">{props.author}</p>
-            <p className="date">{convertDate(props.date)}</p>
-          </span>
+        <span className="button-details">
+          {convertDate(props.date)}
+          <Button text="Edit"></Button>
+          <Button text="Delete"></Button>
         </span>
       </div>
     </div>

@@ -2,8 +2,9 @@ import "./Input.css";
 
 const Button = (props) => {
   return (
-    <div className="input">
-      <button class="full-btn">{props.text}</button>;
+    <div className="input button">
+      <label>&nbsp;</label>
+      <button className="full-btn">{props.text}</button>
     </div>
   );
 };

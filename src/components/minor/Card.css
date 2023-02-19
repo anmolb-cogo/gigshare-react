@@ -46,6 +46,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
   white-space: nowrap;
 }
 
@@ -59,6 +61,9 @@
   font-size: 16px;
   line-height: 24px;
   color: #475467;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 69px;
 }
 
 .firstCard .details .pills {
@@ -286,6 +291,12 @@
   background-size: contain;
 }
 
+.button-details {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .avatar-details .name {
   font-weight: 600;
   font-size: 14px;
@@ -305,16 +316,15 @@
   .verticalCard {
     width: 100%;
   }
-  .card{
+  .card {
     flex-direction: column;
     height: auto;
     width: 100%;
   }
-  .card .poster{
+  .card .poster {
     width: 100%;
   }
   .card .details {
     width: 100%;
   }
-
 }

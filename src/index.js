@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -16,19 +16,20 @@ import Your from "./components/Auth/Your";
 import NoPage from "./components/Main/NoPage";
 
 function App() {
+  var categories = ["Technology", "Travel", "Food"];
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="blogs" element={<Blogs />} />
+          <Route index element={<Home categories={categories} />} />
+          <Route path="blogs" element={<Blogs categories={categories} />} />
           <Route path="pricing" element={<Pricing />} />
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="add" element={<Add />} />
-          <Route path="edit" element={<Edit />} />
-          <Route path="your" element={<Your />} />
+          <Route path="add" element={<Add categories={categories} />} />
+          <Route path="edit" element={<Edit categories={categories} />} />
+          <Route path="your" element={<Your categories={categories} />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

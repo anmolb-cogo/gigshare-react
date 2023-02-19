@@ -1,16 +1,23 @@
-.all-cards{
-    display: flex;
-    flex-direction: column;
-    gap: 36px;
-    align-items: center;
-    margin-bottom: 5%;
+.all-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  align-items: center;
+  margin-bottom: 5%;
 }
 
-.filters{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+.filters {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+@media screen and (min-width: 280px) and (max-width: 480px) {
+  .filters {
+    flex-direction: column;
+    margin-bottom: 10%;
+  }
 }
