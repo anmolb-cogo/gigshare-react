@@ -53,7 +53,7 @@ function View(props) {
   };
   const findCatById = (id) => {
     var categories = props.categories;
-    var category = categories[id-1];
+    var category = categories[id - 1];
     return category;
   };
   const convertDate = (date) => {

@@ -18,11 +18,21 @@ import View from "./components/Main/View";
 
 function App() {
   var categories = ["Technology", "Travel", "Food"];
+  const [authenticated, setAuthenticated] = useState(false);
+  const [authToken, setAuthToken] = useState("");
+
   var baseURL = "http://127.0.0.1:3000/";
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route
+          path="/"
+          element={
+            <Layout
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          }>
           <Route
             index
             element={<Home categories={categories} baseURL={baseURL} />}
@@ -32,20 +42,52 @@ function App() {
             element={<Blogs categories={categories} baseURL={baseURL} />}
           />
           <Route path="pricing" element={<Pricing />} />
-          <Route path="login" element={<Login baseURL={baseURL} />} />
+          <Route
+            path="login"
+            element={
+              <Login
+                baseURL={baseURL}
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
+                authToken = {authToken}
+                setAuthToken = {setAuthToken}
+              />
+            }
+          />
           <Route path="signup" element={<Signup baseURL={baseURL} />} />
           {/* <Route path="profile" element={<Profile baseURL={baseURL} />} /> */}
           <Route
             path="add"
-            element={<Add categories={categories} baseURL={baseURL} />}
+            element={
+              <Add
+                categories={categories}
+                baseURL={baseURL}
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
+              />
+            }
           />
           <Route
             path="edit"
-            element={<Edit categories={categories} baseURL={baseURL} />}
+            element={
+              <Edit
+                categories={categories}
+                baseURL={baseURL}
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
+              />
+            }
           />
           <Route
             path="your"
-            element={<Your categories={categories} baseURL={baseURL} />}
+            element={
+              <Your
+                categories={categories}
+                baseURL={baseURL}
+                authenticated={authenticated}
+                setAuthenticated={setAuthenticated}
+              />
+            }
           />
           <Route
             path="view"

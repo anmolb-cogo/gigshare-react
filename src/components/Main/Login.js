@@ -5,7 +5,7 @@ import "../minor/Input.css";
 import axios from "axios";
 import { useState } from "react";
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -34,8 +34,11 @@ const Login = () => {
         console.log(response);
         const authToken = response.headers.authorization;
         console.log(authToken);
+        props.setAuthenticated(true);
+        props.setAuthToken(authToken);
       })
       .catch((error) => {
+        alert(error);
         console.error(error);
       });
   };

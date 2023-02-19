@@ -1,7 +1,18 @@
+import axios from "axios";
 import { Outlet, Link } from "react-router-dom";
 import "./Layout.css";
 
-const Layout = () => {
+const Layout = (props) => {
+  const logout = () => {
+    console.log("Logging out");
+    axios.delete("https://127.0.0.1:3000/logout", {
+      headers: {
+        Authorization: props.authToken,
+      },
+    });
+    props.setAuthToken = "";
+    props.setAuthenticated = false;
+  };
   return (
     <>
       <nav>
@@ -21,26 +32,43 @@ const Layout = () => {
               <Link to="/pricing">Pricing</Link>
             </li>
           </span>
-          <span className="middle">
-            <li>
-              <Link to="/your">Your Blogs</Link>
-            </li>
+          {props.authenticated && (
+            <span className="middle">
+              <li>
+                <Link to="/your">Your Blogs</Link>
+              </li>
 
-            <li>
-              <Link to="/add">Add Blog</Link>
-            </li>
-          </span>
-          <span className="right">
-            <li>
-              <Link to="/login">Log in</Link>
-            </li>
+              <li>
+                <Link to="/add">Add Blog</Link>
+              </li>
+            </span>
+          )}
+          {!props.authenticated && (
+            <span className="right">
+              <li>
+                <Link to="/login">Log in</Link>
+              </li>
 
-            <li>
-              <Link to="/signup" className="nav-btn">
-                Sign up
-              </Link>
-            </li>
-          </span>
+              <li>
+                <Link to="/signup" className="nav-btn">
+                  Sign up
+                </Link>
+              </li>
+            </span>
+          )}
+          {props.authenticated && (
+            <span className="right">
+              <li>
+                <Link to="/profile">Your Profile</Link>
+              </li>
+
+              <li>
+                <Link to="/" className="nav-btn" onClick={logout}>
+                  Log out
+                </Link>
+              </li>
+            </span>
+          )}
         </ul>
       </nav>
 
