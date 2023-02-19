@@ -115,41 +115,49 @@ function App(props) {
           />
           <Route path="signup" element={<Signup baseURL={baseURL} />} />
           {/* <Route path="profile" element={<Profile baseURL={baseURL} />} /> */}
-          <Route
-            path="add"
-            element={
-              <Add
-                categories={categories}
-                baseURL={baseURL}
-                authenticated={authenticated}
-                setAuthenticated={setAuthenticated}
-                authToken={authToken}
-              />
-            }
-          />
-          <Route
-            path="edit"
-            element={
-              <Edit
-                categories={categories}
-                baseURL={baseURL}
-                authenticated={authenticated}
-                setAuthenticated={setAuthenticated}
-              />
-            }
-          />
-          <Route
-            path="your"
-            element={
-              <Your
-                categories={categories}
-                baseURL={baseURL}
-                authenticated={authenticated}
-                setAuthenticated={setAuthenticated}
-                userDetails={userDetails}
-              />
-            }
-          />
+          {authenticated && (
+            <Route
+              path="add"
+              element={
+                <Add
+                  categories={categories}
+                  baseURL={baseURL}
+                  authenticated={authenticated}
+                  setAuthenticated={setAuthenticated}
+                  authToken={authToken}
+                />
+              }
+            />
+          )}
+
+          {authenticated && (
+            <Route
+              path="edit"
+              element={
+                <Edit
+                  categories={categories}
+                  baseURL={baseURL}
+                  authenticated={authenticated}
+                  setAuthenticated={setAuthenticated}
+                />
+              }
+            />
+          )}
+          {authenticated && (
+            <Route
+              path="your"
+              element={
+                <Your
+                  categories={categories}
+                  baseURL={baseURL}
+                  authenticated={authenticated}
+                  setAuthenticated={setAuthenticated}
+                  userDetails={userDetails}
+                />
+              }
+            />
+          )}
+
           <Route
             path="view"
             element={<View categories={categories} baseURL={baseURL} />}
