@@ -28,6 +28,7 @@
   flex-direction: column;
   gap: 18px;
   height: 45.4%;
+  width: 100%;
 }
 
 .firstCard .details .author {
@@ -64,6 +65,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   height: 69px;
+  width: 100%;
 }
 
 .firstCard .details .pills {

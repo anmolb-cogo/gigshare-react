@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import "./Input.css";
 
 const Select = (props) => {
-  var temp = props.categories;
+  var temp = props.arr;
+  console.log(temp);
   return (
     <div className="input">
       <label>{props.label}</label>
@@ -11,7 +12,8 @@ const Select = (props) => {
         value={props.value}
         onChange={(e) => {
           props.func(e.target.value);
-        }}>
+        }}
+      >
         <option selected value={""}>
           Select an Option
         </option>

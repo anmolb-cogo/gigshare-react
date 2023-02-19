@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
-import { EditorState, convertFromRaw } from 'draft-js';
+import { EditorState, convertFromRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "../Auth/Auth.css";
@@ -109,7 +109,8 @@ function View(props) {
             backgroundRepeat: "no-repeat",
             width: "90%",
             height: "33vh",
-          }}></span>
+          }}
+        ></span>
         <span className="big">{location.state.article_name}</span>
         <span className="profile">
           <span
@@ -122,7 +123,8 @@ function View(props) {
               backgroundPosition: "center",
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
-            }}>
+            }}
+          >
             Hello
           </span>
           <span className="avatar-details">
@@ -138,6 +140,7 @@ function View(props) {
         /> */}
         {/* {location.state.body} */}
         <Editor
+          toolbarHidden
           editorState={editorState}
           onEditorStateChange={onEditorStateChange}
           readOnly={true} // set to true to make the editor content read-only
@@ -154,7 +157,8 @@ function View(props) {
               type="text"
               placeholder="Add Comment"
               func={setComment}
-              value={comment}></input>
+              value={comment}
+            ></input>
             <button className="full-btn" onClick={postComment}>
               Post Comment
             </button>

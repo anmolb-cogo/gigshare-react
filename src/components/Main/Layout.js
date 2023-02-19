@@ -1,11 +1,12 @@
 import axios from "axios";
 import { Outlet, Link } from "react-router-dom";
+import Button from "../minor/Button";
 import "./Layout.css";
 
 const Layout = (props) => {
   const logout = () => {
     console.log("Logging out");
-    const result = axios.delete("https://127.0.0.1:3000/logout", {
+    const result = axios.delete("http://127.0.0.1:3000/logout", {
       headers: {
         Authorization: props.authToken,
       },
@@ -13,11 +14,12 @@ const Layout = (props) => {
     if (result.length == 0) {
       alert(result.data);
     } else {
-      props.setAuthToken = "";
-      props.setAuthenticated = false;
+      props.setAuthToken("");
+      props.setAuthenticated(false);
+      localStorage.removeItem("token");
+      localStorage.removeItem("userId");
       console.log(props.authToken);
       console.log(props.authenticated);
-      
     }
   };
   return (
@@ -70,9 +72,9 @@ const Layout = (props) => {
               </li>
 
               <li>
-                <Link className="nav-btn" onClick={logout}>
+                <button className="nav-btn" onClick={logout}>
                   Log out
-                </Link>
+                </button>
               </li>
             </span>
           )}

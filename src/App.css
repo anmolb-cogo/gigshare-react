@@ -52,6 +52,12 @@ input[type="datetime-local"] {
   cursor: pointer;
 }
 
+a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Mobile Phones */
 @media screen and (min-width: 280px) and (max-width: 480px) {
   html,

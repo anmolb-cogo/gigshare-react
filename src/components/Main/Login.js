@@ -6,25 +6,13 @@ import axios from "axios";
 import { useState } from "react";
 
 const Login = (props) => {
+  var baseURL = props.baseURL;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const login = () => {
-  //   console.log(email);
-  //   const temp = {
-  //     user: {
-  //       email: email,
-  //       password: password,
-  //     },
-  //   };
-  //   axios
-  //     .post("http://127.0.0.1:3000/login", temp)
-  //     .then((response) => console.log(response));
-  // };
-
   const login = () => {
     axios
-      .post("http://127.0.0.1:3000/login", {
+      .post(baseURL + "login", {
         user: {
           email: email,
           password: password,
@@ -32,15 +20,15 @@ const Login = (props) => {
       })
       .then((response) => {
         console.log(response);
+        console.log(response.data.user.id);
         const authToken = response.headers.authorization;
         console.log(authToken);
         props.setAuthenticated(true);
         props.setAuthToken(authToken);
+        localStorage.setItem("token", authToken);
+        localStorage.setItem("userId", response.data.user.id);
       })
-      .catch((error) => {
-        alert(error);
-        console.error(error);
-      });
+      .catch((error) => alert(error));
   };
   return (
     <div className="login">
