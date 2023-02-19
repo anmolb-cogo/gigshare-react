@@ -30,15 +30,13 @@ const Login = () => {
         placeholder="Enter your email"
         label="E-Mail ID"
         value={email}
-        func={setEmail}
-      ></Input>
+        func={setEmail}></Input>
       <Input
         type="password"
         placeholder="Enter your password"
         label="Password"
         value={password}
-        func={setPassword}
-      ></Input>
+        func={setPassword}></Input>
       <div className="input">
         <div className="forgot">Forgot Password</div>
       </div>

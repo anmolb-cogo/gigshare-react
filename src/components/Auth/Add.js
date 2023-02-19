@@ -11,7 +11,7 @@ import "../minor/Input.css";
 import ImgUpload from "./ImgUpload";
 
 import { convertFromRaw } from "draft-js";
-import {convertToRaw} from "draft-js";
+import { convertToRaw } from "draft-js";
 
 function Add(props) {
   const [title, setTitle] = useState("");

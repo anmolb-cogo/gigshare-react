@@ -44,36 +44,31 @@ const Signup = () => {
         placeholder="Enter your name"
         label="Your Name"
         value={name}
-        func={setName}
-      ></Input>
+        func={setName}></Input>
       <Input
         type="email"
         placeholder="Enter your email"
         label="E-Mail ID"
         value={email}
-        func={setEmail}
-      ></Input>
+        func={setEmail}></Input>
       <Input
         type="password"
         placeholder="Enter your password"
         label="Password"
         value={password}
-        func={setPassword}
-      ></Input>
+        func={setPassword}></Input>
       <Input
         type="password"
         placeholder="Confirm password"
         label="Confirm Password"
         value={confirmPass}
-        func={setConfirmPass}
-      ></Input>
+        func={setConfirmPass}></Input>
       <Input
         type="text"
         placeholder="Enter your bio"
         label="Bio"
         value={bio}
-        func={setBio}
-      ></Input>
+        func={setBio}></Input>
 
       <Button text="Log In" onClick={setLogin}></Button>
       <div className="input">

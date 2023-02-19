@@ -7,13 +7,12 @@
   border-radius: 2px;
 }
 
-@media screen and (min-width: 280px) and (max-width: 480px){
-  .main-banner{
+@media screen and (min-width: 280px) and (max-width: 480px) {
+  .main-banner {
     width: 100%;
   }
-  .article{
+  .article {
     margin: 0;
     width: 100%;
-    
   }
 }

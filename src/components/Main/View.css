@@ -29,13 +29,13 @@
   font-size: 14px;
 }
 
-.new-comment{
-    width: 100%;
-    display: flex;
-    gap: 12px;
-    align-items: center;
+.new-comment {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  align-items: center;
 }
 
-.new-comment input{
-    width: 80%;
+.new-comment input {
+  width: 80%;
 }

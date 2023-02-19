@@ -13,15 +13,19 @@ import "./View.css";
 import { convertFromRaw } from "draft-js";
 import { LikeButton } from "@lyket/react";
 import { Provider } from "@lyket/react";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 function View(props) {
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [banner, setBanner] = useState("");
-  const [editorState, setEditorState] = useState();
   const [totalLikes, setTotalLikes] = useState(4);
   const [check, setCheck] = useState(0);
+  const [comment, setComment] = useState("");
+  const [commentList, setCommentList] = useState("");
+
+  const location = useLocation();
+  console.log(location.state);
 
   const handleLike = () => {
     var count = totalLikes;
@@ -35,10 +39,22 @@ function View(props) {
       setTotalLikes(count);
     }
   };
-  const findCatId = () => {
+
+  const postComment = () => {
+    const temp = {
+      comment: {
+        body: comment,
+        user_name: "Anonymous",
+      },
+    };
+    axios
+      .post("http://127.0.0.1:3000/comment", temp)
+      .then((response) => console.log(response));
+  };
+  const findCatById = (id) => {
     var categories = props.categories;
-    var id = categories.indexOf(category) + 1;
-    setCategoryId(id);
+    var category = categories[id-1];
+    return category;
   };
   const convertDate = (date) => {
     var parts = date.slice(0, 10).split("-");
@@ -46,13 +62,8 @@ function View(props) {
     return mydate.toDateString();
   };
 
-  const onEditorStateChange = (editorState) => {
-    setEditorState(editorState);
-    console.log(editorState);
-  };
-
   useEffect(() => {
-    setEditorState(EditorState.createEmpty());
+    //setEditorState(EditorState.createEmpty());
   }, []);
 
   //some test
@@ -75,21 +86,18 @@ function View(props) {
   return (
     <div className="home">
       <div className="main">
-        <span className="small">Category name</span>
+        <span className="small">{findCatById(location.state.category_id)}</span>
         <span
           className="main-banner"
           style={{
-            backgroundImage:
-              "url(" +
-              "https://upcdn.io/FW25b53/thumbnail/uploads/2023/02/18/Image-7Ptx.png" +
-              ")",
+            backgroundImage: "url(" + location.state.image + ")",
             backgroundPosition: "center",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             width: "90%",
             height: "33vh",
           }}></span>
-        <span className="big">Some Very Big Title of the Blog</span>
+        <span className="big">{location.state.article_name}</span>
         <span className="profile">
           <span
             className="avatar"
@@ -105,16 +113,17 @@ function View(props) {
             Hello
           </span>
           <span className="avatar-details">
-            <p className="name">Some Author</p>
-            <p className="date">Some Date</p>
+            <p className="name">{location.state.username}</p>
+            <p className="date">{convertDate(location.state.created_at)}</p>
           </span>
         </span>
       </div>
       <div className="article">
-        <Editor
+        {/* <Editor
           initialEditorState={editorState}
           onEditorStateChange={onEditorStateChange}
-        />
+        /> */}
+        {location.state.body}
       </div>
 
       <div className="interaction">
@@ -123,8 +132,14 @@ function View(props) {
         </div>
         <div className="comments">
           <div className="new-comment">
-            <input type="text" placeholder="Add Comment"></input>
-            <button className="full-btn">Post Comment</button>
+            <input
+              type="text"
+              placeholder="Add Comment"
+              func={setComment}
+              value={comment}></input>
+            <button className="full-btn" onClick={postComment}>
+              Post Comment
+            </button>
           </div>
           <h4>Previous Comments:</h4>
           <span className="comment">
