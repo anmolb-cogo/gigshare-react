@@ -18,7 +18,7 @@ import View from "./components/Main/View";
 
 function App() {
   var categories = ["Technology", "Travel", "Food"];
-  var baseURL = "http://181d-103-69-88-178.in.ngrok.io/";
+  var baseURL = "http://127.0.0.1:3000/";
   return (
     <BrowserRouter>
       <Routes>

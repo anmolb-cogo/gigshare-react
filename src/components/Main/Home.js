@@ -10,27 +10,19 @@ import VerticalCard from "../minor/VerticalCard";
 const Home = (props) => {
   const [mostLiked, setMostLiked] = useState([]);
   const [mostCommented, setMostCommented] = useState([]);
+  var baseURL = props.baseURL;
 
   //api call
-  const config = {
-    headers: {
-      "ngrok-skip-browser-warning": "69420",
-    },
-  };
   const getMostLiked = async function () {
-    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-    const url = "http://181d-103-69-88-178.in.ngrok.io/mostlikes";
-    const list = await axios.get(proxyUrl + url, config);
+    const url = baseURL + "mostlikes";
+    const list = await axios.get(url, config);
     setMostLiked(list.data);
-    console.log(list.data);
   };
 
   const getMostCommented = async function () {
-    const proxyUrl = "https://cors-anywhere.herokuapp.com/";
-    const url = "https://181d-103-69-88-178.in.ngrok.io/mostcomments";
-    const list = await axios.get(proxyUrl + url, config);
+    const url = baseURL + "mostcomments";
+    const list = await axios.get(url, config);
     setMostCommented(list.data);
-    console.log(list.data);
   };
 
   //make API call

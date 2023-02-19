@@ -64,16 +64,12 @@ const Profile = () => {
                 specialise in UX/UI design, brand strategy, and Webflow
                 development.
               </textarea>
-              <span class="char-count" id="count">
-                275 characters left
-              </span>
             </div>
           </div>
         </div>
-
-        <div class="card-btn">
-          <button class="full-btn">Save Changes</button>
-        </div>
+      </div>
+      <div class="card-btn">
+        <button class="full-btn">Save Changes</button>
       </div>
     </div>
   );
