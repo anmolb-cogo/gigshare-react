@@ -82,6 +82,7 @@ function App(props) {
               setAuthenticated={setAuthenticated}
               authToken={authToken}
               setAuthToken={setAuthToken}
+              baseURL={baseURL}
             />
           }
         >
@@ -145,6 +146,7 @@ function App(props) {
                 baseURL={baseURL}
                 authenticated={authenticated}
                 setAuthenticated={setAuthenticated}
+                userDetails={userDetails}
               />
             }
           />

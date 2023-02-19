@@ -10,6 +10,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-top: 2%;
+  margin-bottom: 5%;
 }
 
 .comment {
@@ -20,13 +22,20 @@
   padding-bottom: 10px;
   padding-top: 10px;
   border-bottom: 0.5px solid var(--light-grey-text);
+  color: var(--light-grey-text);
+}
+
+.comments h4{
+  margin-top: 2%;
 }
 .comment-name {
   font-size: 14px;
+  color: var(--purple-text);
 }
 
 .comment-body {
   font-size: 14px;
+  color: black;
 }
 
 .new-comment {

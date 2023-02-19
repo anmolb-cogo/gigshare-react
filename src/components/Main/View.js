@@ -16,15 +16,29 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 
 function View(props) {
+  var baseURL = props.baseURL;
+  const location = useLocation();
+  console.log(location.state.id);
   const [categoryId, setCategoryId] = useState("");
   const [banner, setBanner] = useState("");
-  const [totalLikes, setTotalLikes] = useState(4);
+  const [totalLikes, setTotalLikes] = useState(location.state.likes);
   const [check, setCheck] = useState(0);
   const [comment, setComment] = useState("");
-  const [commentList, setCommentList] = useState("");
+  const [commentList, setCommentList] = useState([]);
 
-  const location = useLocation();
-  console.log(location.state);
+  //api call
+  const getCommentList = async function () {
+    const url = baseURL + "comments/" + location.state.id;
+    //console.log(url);
+    const list = await axios.get(url);
+    console.log(list.data);
+    setCommentList(list.data);
+  };
+
+  // //make API call
+  useEffect(function () {
+    getCommentList();
+  }, []);
 
   const handleLike = () => {
     var count = totalLikes;
@@ -37,19 +51,36 @@ function View(props) {
       setCheck(0);
       setTotalLikes(count);
     }
+    axios
+      .patch(baseURL + "updatelikes/" + location.state.id, {
+        article: {
+          likes: count,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => console.log(error));
   };
 
+  console.log(location.state.username);
   const postComment = () => {
-    const temp = {
+    var username = "Anonymous";
+    if (location.state.username) {
+      username = location.state.username;
+    }
+    const data = {
       comment: {
         body: comment,
-        user_name: "Anonymous",
+        user_name: username,
       },
     };
     axios
-      .post("http://127.0.0.1:3000/comment", temp)
-      .then((response) => console.log(response));
+      .post(baseURL + "comment/" + location.state.id, data)
+      .then((response) => console.log(response))
+      .catch((error) => alert(error));
   };
+
   const findCatById = (id) => {
     var categories = props.categories;
     var category = categories[id - 1];
@@ -65,26 +96,12 @@ function View(props) {
     //setEditorState(EditorState.createEmpty());
   }, []);
 
-  //some test
-  const jsonContent = {
-    blocks: [
-      {
-        key: "bks89",
-        text: "Hello, I am Anmol Bansal. Do I need something extra for this too?",
-        type: "unstyled",
-        depth: 0,
-        inlineStyleRanges: [
-          { offset: 7, length: 10, style: "BOLD" },
-          { offset: 18, length: 6, style: "ITALIC" },
-        ],
-        entityRanges: [],
-        data: {},
-      },
-    ],
-    entityMap: {},
-  };
-  const content = JSON.parse(JSON.stringify(jsonContent));
+  const jsonContent = location.state.body;
+  console.log(jsonContent);
+  const content = JSON.parse(jsonContent);
+  console.log(content);
   const contentState = convertFromRaw(content);
+  console.log(contentState);
 
   const [editorState, setEditorState] = useState(
     EditorState.createWithContent(contentState)
@@ -133,12 +150,7 @@ function View(props) {
           </span>
         </span>
       </div>
-      <div className="article">
-        {/* <Editor
-          initialEditorState={editorState}
-          onEditorStateChange={onEditorStateChange}
-        /> */}
-        {/* {location.state.body} */}
+      <div className="article-view">
         <Editor
           toolbarHidden
           editorState={editorState}
@@ -156,7 +168,9 @@ function View(props) {
             <input
               type="text"
               placeholder="Add Comment"
-              func={setComment}
+              onChange={(e) => {
+                setComment(e.target.value);
+              }}
               value={comment}
             ></input>
             <button className="full-btn" onClick={postComment}>
@@ -164,16 +178,15 @@ function View(props) {
             </button>
           </div>
           <h4>Previous Comments:</h4>
-          <span className="comment">
-            <span className="comment-name">Anonymous</span>
-            commented
-            <span className="comment-body">Some Comment Body</span>
-          </span>
-          <span className="comment">
-            <span className="comment-name">Anonymous</span>
-            commented
-            <span className="comment-body">Some Comment Body</span>
-          </span>
+          {commentList.map((comment) => {
+            return (
+              <span className="comment">
+                <span className="comment-name">{comment.user_name}</span>
+                commented
+                <span className="comment-body">{comment.body}</span>
+              </span>
+            );
+          })}
         </div>
       </div>
     </div>

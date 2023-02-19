@@ -4,9 +4,10 @@ import Button from "../minor/Button";
 import "./Layout.css";
 
 const Layout = (props) => {
+  var baseURL = props.baseURL;
   const logout = () => {
     console.log("Logging out");
-    const result = axios.delete("http://127.0.0.1:3000/logout", {
+    const result = axios.delete(baseURL + "logout", {
       headers: {
         Authorization: props.authToken,
       },

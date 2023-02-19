@@ -1,8 +1,27 @@
+import axios from "axios";
 import Button from "./Button";
 import "./Card.css";
 
 const Card = (props) => {
   var categories = props.categories;
+  var baseURL = props.baseURL;
+  var authToken = localStorage.getItem("token");
+  console.log(props.id);
+  const delArticle = (key) => {
+    console.log("Deleting Article");
+
+    axios
+      .delete(baseURL + "article/" + key, {
+        headers: {
+          Authorization: authToken,
+        },
+      })
+      .then((response) => {
+        console.log("article deleted");
+        alert("Article Deleted!");
+      })
+      .catch((error) => alert(error));
+  };
 
   const convertDate = (date) => {
     var parts = date.slice(0, 10).split("-");
@@ -27,8 +46,10 @@ const Card = (props) => {
         <span className="desc">{props.body}</span>
         <span className="button-details">
           {convertDate(props.date)}
-          <Button text="Edit"></Button>
-          <Button text="Delete"></Button>
+          <button className="fill-btn">Edit</button>
+          <button className="fill-btn" onClick={() => delArticle(props.id)}>
+            Delete
+          </button>
         </span>
       </div>
     </div>
