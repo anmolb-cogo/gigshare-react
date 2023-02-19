@@ -17,16 +17,23 @@ const Blogs = (props) => {
   //api call
   const getAuthors = async function () {
     const url = baseURL + "getauthours";
-    console.log(url);
+    //console.log(url);
     const list = await axios.get(url);
-    setAuthors(list.data);
+    console.log(list.data);
+    //console.log(list.data.name);
+    var aut = list.data.map(({name}) => ({name}))
+    console.log(aut);
+    const temp = Object.values(aut);
+    console.log(temp);
+    setAuthors(temp);
   };
 
   //api call
   const getArticleList = async function () {
     const url = baseURL + "articles";
-    console.log(url);
+    //console.log(url);
     const list = await axios.get(url);
+    console.log(list.data);
     setArticleList(list.data);
   };
 
@@ -62,11 +69,11 @@ const Blogs = (props) => {
               categories={props.categories}
               value={catFilter}
               func={setCatFilter}></Select>
-            <Select
+            {/* <Select
               label="Filter by Author"
-              categories={props.categories}
+              categories={authors}
               value={authFilter}
-              func={setAuthFilter}></Select>
+              func={setAuthFilter}></Select> */}
           </span>
         </div>
       </div>
@@ -112,6 +119,7 @@ const Blogs = (props) => {
                 author={article.username}
                 date={article.created_at}
               />
+              
             );
           })}
       </div>

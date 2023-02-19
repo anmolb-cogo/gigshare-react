@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "./Input.css";
 
 const Select = (props) => {
-  var categories = props.categories;
+  var temp = props.categories;
   return (
     <div className="input">
       <label>{props.label}</label>
@@ -15,7 +15,7 @@ const Select = (props) => {
         <option selected value={""}>
           Select an Option
         </option>
-        {categories.map((cat) => {
+        {temp.map((cat) => {
           return <option value={cat}>{cat}</option>;
         })}
       </select>

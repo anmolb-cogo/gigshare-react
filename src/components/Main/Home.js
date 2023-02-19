@@ -16,7 +16,6 @@ const Home = (props) => {
   //api call
   const getMostLiked = async function () {
     const url = baseURL + "mostlikes";
-    console.log(url);
     const list = await axios.get(url);
     setMostLiked(list.data);
   };
