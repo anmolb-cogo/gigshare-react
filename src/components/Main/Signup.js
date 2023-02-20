@@ -103,7 +103,7 @@ const Signup = (props) => {
         func={setBio}
       ></Input>
 
-      <Button text="Log In" onClick={setLogin}></Button>
+      <Button text="Sign up" onClick={setLogin}></Button>
       <div className="input">
         <div className="forgot sign">
           Already have an account? <Link to="/login">Log In</Link>

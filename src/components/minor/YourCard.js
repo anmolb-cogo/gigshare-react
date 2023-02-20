@@ -20,6 +20,7 @@ const Card = (props) => {
       .then((response) => {
         console.log("article deleted");
         alert("Article Deleted!");
+        window.location.href = "/your";
       })
       .catch((error) => alert(error));
   };
