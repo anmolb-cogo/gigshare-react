@@ -1,4 +1,8 @@
 import "./Card.css";
+import { EditorState, convertFromRaw } from "draft-js";
+import { Editor } from "react-draft-wysiwyg";
+import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { useState } from "react";
 
 const VerticalCard = (props) => {
   var categories = props.categories;
@@ -11,6 +15,20 @@ const VerticalCard = (props) => {
   const findCategory = (index) => {
     var category = categories[index - 1];
     return category;
+  };
+  const jsonContent = props.body;
+  console.log(jsonContent);
+  const content = JSON.parse(jsonContent);
+  //console.log(content);
+  const contentState = convertFromRaw(content);
+  //console.log(contentState);
+
+  const [editorState, setEditorState] = useState(
+    EditorState.createWithContent(contentState)
+  );
+
+  const onEditorStateChange = () => {
+    setEditorState(editorState);
   };
   return (
     <div className="firstCard verticalCard">
@@ -29,7 +47,8 @@ const VerticalCard = (props) => {
               height="28"
               viewBox="0 0 24 28"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 d="M7 21L17 11M17 11H7M17 11V21"
                 stroke="black"
@@ -40,7 +59,14 @@ const VerticalCard = (props) => {
             </svg>
           </span>
         </span>
-        <span className="desc">{props.body}</span>
+        <span className="desc">
+          <Editor
+            toolbarHidden
+            editorState={editorState}
+            onEditorStateChange={onEditorStateChange}
+            readOnly={true} // set to true to make the editor content read-only
+          />
+        </span>
         <span className="pills">
           <span className="pill">{findCategory(props.categoryId)}</span>
         </span>

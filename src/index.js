@@ -41,11 +41,11 @@ function App(props) {
     setAuthors(temp);
   };
 
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState();
   const [authToken, setAuthToken] = useState(localStorage.getItem("token"));
   const [userId, setUserId] = useState("");
   const token = localStorage.getItem("token");
-
+  console.log(token);
   const checkJWT = () => {
     if (!token) {
       console.log("Token not found");
@@ -116,7 +116,10 @@ function App(props) {
           <Route path="signup" element={<Signup baseURL={baseURL} />} />
 
           {authenticated && (
-            <Route path="profile" element={<Profile baseURL={baseURL} userDetails={userDetails}/>} />
+            <Route
+              path="profile"
+              element={<Profile baseURL={baseURL} userDetails={userDetails} />}
+            />
           )}
 
           {authenticated && (

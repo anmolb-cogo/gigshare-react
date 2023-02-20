@@ -67,7 +67,7 @@ function View(props) {
   const postComment = () => {
     var username = "Anonymous";
     if (location.state.username) {
-      username = location.state.username;
+      username = localStorage.getItem("name");
     }
     const data = {
       comment: {
@@ -77,7 +77,11 @@ function View(props) {
     };
     axios
       .post(baseURL + "comment/" + location.state.id, data)
-      .then((response) => console.log(response))
+      .then((response) => {
+        console.log(response);
+        window.alert("Comment posted, refresh to see!");
+        //setCommentList(commentList.push(comment));
+      })
       .catch((error) => alert(error));
   };
 

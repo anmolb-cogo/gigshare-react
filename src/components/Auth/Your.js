@@ -14,12 +14,13 @@ const Your = (props) => {
   var baseURL = props.baseURL;
   //api call
   const getUserArticleList = async function () {
-    // const url = baseURL + "article/username/" + props.userDetails.name;
-    const url = baseURL+"userarticles";
+    const url = baseURL + "article/username/" + props.userDetails.name;
+    //const url = baseURL+"userarticles";
     console.log(url);
     const list = await axios.get(url,{
       headers: {
-        Authorization: authToken,
+        "Content-Type": "application/json",
+        Authorization: authToken
       },
     });
     console.log(list.data);

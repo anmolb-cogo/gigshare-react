@@ -1,4 +1,9 @@
 import "./Card.css";
+import { EditorState, convertFromRaw } from "draft-js";
+import { Editor } from "react-draft-wysiwyg";
+import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { useState } from "react";
+
 
 const Card = (props) => {
   var categories = props.categories;
@@ -8,10 +13,27 @@ const Card = (props) => {
     var mydate = new Date(parts[0], parts[1] - 1, parts[2]);
     return mydate.toDateString();
   };
+
   const findCategory = (index) => {
     var category = categories[index - 1];
     return category;
   };
+
+  const jsonContent = props.body;
+  console.log(jsonContent);
+  const content = JSON.parse(jsonContent);
+  //console.log(content);
+  const contentState = convertFromRaw(content);
+  //console.log(contentState);
+
+  const [editorState, setEditorState] = useState(
+    EditorState.createWithContent(contentState)
+  );
+
+  const onEditorStateChange = () => {
+    setEditorState(editorState);
+  };
+
   return (
     <div className="card">
       <div className="poster">
@@ -23,7 +45,15 @@ const Card = (props) => {
         <span className="title">
           <span>{props.title}</span>
         </span>
-        <span className="desc">{props.body}</span>
+        <span className="desc">
+          {/* {props.body} */}
+          <Editor
+            toolbarHidden
+            editorState={editorState}
+            onEditorStateChange={onEditorStateChange}
+            readOnly={true} // set to true to make the editor content read-only
+          />
+        </span>
         <span className="profile">
           <span
             className="avatar"
@@ -35,7 +65,8 @@ const Card = (props) => {
               backgroundPosition: "center",
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
-            }}>
+            }}
+          >
             Hello
           </span>
           <span className="avatar-details">

@@ -63,6 +63,7 @@ function Add(props) {
 
       axios
         .post(baseURL + "createarticle/" + localStorage.getItem("userId"), data, headers)
+        //.post(baseURL + "article", data, headers)
         .then((response) => {
           // handle success
           console.log(response.data);
