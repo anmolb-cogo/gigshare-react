@@ -35,6 +35,7 @@ function Add(props) {
     console.log(editorState);
   };
   const handleSave = () => {
+    console.log(authToken);
     if (authToken) {
       const contentState = editorState.getCurrentContent();
       const content = JSON.stringify(convertToRaw(contentState));
@@ -44,6 +45,8 @@ function Add(props) {
         "Content-Type": "application/json",
         Authorization: authToken,
       };
+
+      console.log(headers);
 
       const data = {
         article: {
@@ -59,7 +62,7 @@ function Add(props) {
       console.log(data);
 
       axios
-        .post(baseURL + "article", data, headers)
+        .post(baseURL + "createarticle/" + localStorage.getItem("userId"), data, headers)
         .then((response) => {
           // handle success
           console.log(response.data);
