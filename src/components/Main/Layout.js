@@ -25,6 +25,7 @@ const Layout = (props) => {
       localStorage.removeItem("bio");
       console.log(props.authToken);
       console.log(props.authenticated);
+      window.location.href = "/";
       alert("Logged Out!");
     }
   };

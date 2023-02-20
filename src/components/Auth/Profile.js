@@ -1,8 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Profile.css";
+import ImgUpload from "./ImgUpload";
+import axios from "axios";
 
 const Profile = (props) => {
+  const baseURL = props.baseURL;
   const userDetails = props.userDetails;
+  const [image_url, setProfilePic] = useState(userDetails.image_url);
+  const [name, setName] = useState(userDetails.name);
+  const [email, setEmail] = useState(userDetails.email);
+  const [description, setDescription] = useState(userDetails.description);
+  var authToken = localStorage.getItem("token");
+  var userId = localStorage.getItem("userId");
+
+  const editProfile = () => {
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: authToken,
+    };
+
+    const data = {
+      user: {
+        email: email,
+        name: name,
+        description: description,
+        image_url: image_url,
+      },
+    };
+    console.log(data);
+    console.log(baseURL + "users/" + userId);
+    axios
+      .patch(baseURL + "users/" + userId, data, headers)
+      .then((response) => {
+        console.log(response);
+        window.alert("Profile Updated");
+      })
+      .catch((error) => alert(error));
+  };
+
   return (
     <div className="profile-main" id="main">
       <div className="profile-header">
@@ -16,7 +51,7 @@ const Profile = (props) => {
               <span
                 className="profile-avatar"
                 style={{
-                  backgroundImage: "url(" + userDetails.image_url + ")",
+                  backgroundImage: "url(" + image_url + ")",
                 }}
               >
                 {" "}
@@ -44,11 +79,30 @@ const Profile = (props) => {
           <div className="profile-card-top">
             <div className="profile-input profile-email">
               <label>Your name</label>
-              <input type="text" value={userDetails.name} />
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+              />
             </div>
             <div className="profile-input profile-email">
               <label>Email address</label>
-              <input type="email" value={userDetails.email} />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+              />
+            </div>
+            <div className="profile-input profile-email">
+              <label>Change Profile Photo</label>
+              <ImgUpload
+                banner={image_url}
+                setBanner={setProfilePic}
+              ></ImgUpload>
             </div>
           </div>
         </div>
@@ -63,15 +117,24 @@ const Profile = (props) => {
           <div className="profile-card-top">
             <div className="profile-input profile-username">
               <label>Description</label>
-              <textarea id="description" cols="30" rows="4" maxlength="400">
-                {userDetails.description}
-              </textarea>
+              <textarea
+                id="description"
+                cols="30"
+                rows="4"
+                maxlength="400"
+                value={description}
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
+              ></textarea>
             </div>
           </div>
         </div>
       </div>
       <div className="profile-card-btn">
-        <button className="profile-full-btn">Save Changes</button>
+        <button className="profile-full-btn" onClick={editProfile}>
+          Save Changes
+        </button>
       </div>
     </div>
   );
